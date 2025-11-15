@@ -43,3 +43,11 @@ yarn.lock
 
 # Test data
 qtagistudio-*
+
+# Examples package - decompiled/built files
+/packages/examples/eng/src/
+/packages/examples/eng/build/
+/packages/examples/eng/agikit-project.json
+/packages/examples/heb/build/
+/packages/examples/heb/orig/
+/packages/examples/heb/agikit-project.json
