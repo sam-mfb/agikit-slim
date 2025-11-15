@@ -20,6 +20,7 @@
 /lerna-debug.log
 yarn-error.log
 .pnpm-debug.log
+*.build.log
 
 # Dependencies
 node_modules/
