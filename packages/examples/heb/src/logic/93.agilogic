@@ -1,0 +1,61 @@
+prevent.input();
+status.line.off();
+text.screen();
+v19 = 0;
+reset(f4);
+display(1, 1, m21);
+display(3, 0, m20);
+display(4, 0, m19);
+display(5, 0, m18);
+display(6, 0, m17);
+display(7, 0, m16);
+display(8, 0, m15);
+display(9, 0, m14);
+display(10, 0, m13);
+display(11, 0, m12);
+display(12, 0, m11);
+display(13, 0, m10);
+display(14, 0, m9);
+display(15, 0, m8);
+display(16, 0, m7);
+display(17, 0, m6);
+display(18, 0, m5);
+display(19, 0, m4);
+display(20, 0, m3);
+display(21, 0, m2);
+display(22, 0, m1);
+
+Address92:
+
+if (!have.key()) {
+  goto(Address92);
+}
+accept.input();
+status.line.on();
+graphics();
+set(f4);
+return();
+
+
+// messages
+#message 1 "coords      - ego's coordinates on/off "
+#message 2 "release pri - release ego's priority   "
+#message 3 "set pri     - set ego's priority       "
+#message 4 "              an inventory object      "
+#message 5 "object room - display room number of   "
+#message 6 "gimme gimme - get all inventory objects"
+#message 7 "get object  - get any inventory object "
+#message 8 "show pri    - display priority screen  "
+#message 9 "              a screen object          "
+#message 10 "object      - display information about"
+#message 11 "reset flag  - reset (clear) a flag     "
+#message 12 "set flag    - set a flag               "
+#message 13 "show flag   - display status of a flag "
+#message 14 "set var     - change value of a var    "
+#message 15 "show var    - display value of a var   "
+#message 16 "pos         - change ego's position    "
+#message 17 "tp          - teleport                 "
+#message 18 "show mem    - display memory stats     "
+#message 19 "              (SCROLL LOCK to activate)"
+#message 20 "trace on    - enables tracing          "
+#message 21 "           DEBUG MODE HELP             "

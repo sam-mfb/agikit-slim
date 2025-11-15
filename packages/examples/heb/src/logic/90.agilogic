@@ -1,0 +1,43 @@
+if (!f4 && f2 && (v9 == 0)) {
+  if (said("die")) {
+    load.view(1);
+    set.view(o0, 1);
+    program.control();
+    stop.motion(o0);
+    v35 = 1;
+  }
+
+  if (said("examine", "test object")) {
+    print(m5);
+    get.num(m5, v255);
+  
+    if (has(i1)) {
+      show.obj(220);
+    } else {
+      print(m4);
+    }
+  }
+
+  if (said("examine", "ANYWORD") || said("examine", "ANYWORD", "ANYWORD")) {
+    print(m3);
+  }
+
+  if (said("get", "ANYWORD") || said("get", "ANYWORD", "ANYWORD")) {
+    print(m2);
+  }
+
+  if (said("use", "ANYWORD") || said("use", "ANYWORD", "ANYWORD")) {
+    print(m1);
+  }
+}
+
+Address125:
+return();
+
+
+// messages
+#message 1 "What do you want me to do with it?"
+#message 2 "You can't get that here!"
+#message 3 "What? Where?"
+#message 4 "You don't have it."
+#message 5 "test object"
