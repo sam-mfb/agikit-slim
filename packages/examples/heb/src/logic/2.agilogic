@@ -36,4 +36,4 @@ return();
 
 
 // messages
-#message 1 "This is an empty room."
+#message 1 ".זה חדר ריק"
