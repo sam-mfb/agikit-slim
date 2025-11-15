@@ -4,7 +4,6 @@ import { ResourceToExtract, ResourceType } from '@agikit/core';
 import parseArgs, { ParsedArgs } from 'minimist';
 import { buildProject } from './Commands/build';
 import { extractGame } from './Commands/extract';
-import { formatLogicScript } from './Commands/formatLogic';
 
 function parseResourcesToExtract(
   resourceType: ResourceType,
@@ -46,13 +45,6 @@ const commandRunners: { [cmd: string]: (args: ParsedArgs) => void } = {
         decompilerDebug: args.d,
         onlyResources: only.length > 0 ? only : undefined,
       });
-    }
-  },
-  formatLogic: (args: ParsedArgs) => {
-    if (args._.length !== 2) {
-      console.error(`Usage: ${process.argv[1]} ${process.argv[2]} logicfile`);
-    } else {
-      formatLogicScript(args._[1]);
     }
   },
 };

@@ -1,7 +1,0 @@
-declined:
-  - root
-  - agikit-vscode
-  - "@agikit/cli"
-  - "@agikit/core"
-  - "@agikit/logic-language-server"
-  - "@agikit/react-editors"

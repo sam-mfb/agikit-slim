@@ -1,31 +1,51 @@
-# agikit
+# agikit-slim
 
-agikit is a developer toolchain for Sierra's AGI (Adventure Game Interpreter) engine. AGI was used
+agikit-slim is a fork of the original agikit toolchain here:
+
+https://github.com/nbudin/agikit
+
+The purpose of the fork is to focus solely on decompiling and compiling and not any user interface issues. This makes it easier to keep dependencies up to date and to add new features. The particular feature I forked in order to add is foreign-language encoding for translations. I tried to develop a PR for the original package, but its development toolchain is somewhat out of date and one I'm not familiar with...
+
+## Background
+
+The original agikit was made as a developer toolchain for Sierra's AGI (Adventure Game Interpreter) engine. AGI was used
 in the 1980s to develop adventure games including King's Quest I, II, and III, Space Quest I and II,
 and more. Later, it was reverse engineered by fans and used to develop many fan-made games.
 A lot more information about AGI is available at
 [the AGI Programmers Wiki](http://agiwiki.sierrahelp.com).
 
-## Goals
+## Development Setup
 
-agikit aims to provide:
+This project uses [Rush.js](https://rushjs.io/) with pnpm for monorepo management.
 
-- A composable, extensible, cross-platform set of tools for working with AGI
-- Compatibility with other tools, such as WinAGI and AGI Studio
-- A platform to build other tooling, such as text editor extensions, language servers, etc.
-- A modern compiler architecture that allows for language extensions and optimization
+### Prerequisites
 
-## Visual Studio Code usage
+- Node.js >= 18.0.0
+- Rush installed globally: `npm install -g @microsoft/rush`
 
-Install the extension from: https://marketplace.visualstudio.com/items?itemName=nbudin.agikit-vscode
+### Getting Started
 
-For some template code to start with, clone: https://github.com/nbudin/agikit-project-template
+```bash
+# Install dependencies
+rush update
+
+# Build all packages
+rush rebuild
+
+# Build only changed packages
+rush build
+```
+
+### Project Structure
+
+- `packages/core` - Core AGI compiler/decompiler library
+- `packages/cli` - Command-line interface
 
 ## Command line usage
 
-To install it:
+To install the CLI globally:
 
-`npm install -g @agikit/cli`
+`npm install -g @agikit-slim/cli`
 
 To extract an AGI game to source files:
 
@@ -35,19 +55,10 @@ To build AGI game volume files from extracted source files:
 
 `agikit build path/to/project`
 
-To auto-format a LOGIC script:
-
-`agikit formatLogic path/to/scriptfile.agilogic`
-
 ## Current status
-
-agikit is early stage right now. As of this writing (version 0.8.0), it can decompile and compile
-King's Quest I, Space Quest II, Operation: RECON, Gold Rush, Manhunter: New York, and the agikit template project
-successfully. It possibly works with other games too, but I haven't tested it on everything yet.
 
 Known limitations:
 
-- SOUND editing is incomplete and only supports IBM PCjr SOUND resources
-- Not yet compatible with WinAGI projects
+- Not compatible with WinAGI projects
 - There are some missing features in the LOGIC language:
   - `]` as a comment character

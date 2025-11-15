@@ -1,18 +1,18 @@
 {
   "name": "@agikit/core",
-  "version": "0.8.2",
+  "version": "1.0.0",
   "homepage": "https://github.com/nbudin/agikit",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "author": {
     "name": "Nat Budin",
     "email": "natbudin@gmail.com",
     "url": "https://github.com/nbudin"
   },
   "scripts": {
-    "build": "tsc --build",
-    "prepare": "tsc --build",
+    "build": "pnpm run generate-parsers && tsc --build",
     "generate-parsers": "ts-node src/Scripting/generateParsers.ts",
-    "test": "jest"
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "assert-never": "^1.2.1",
@@ -21,29 +21,16 @@
     "ts-is-present": "^1.2.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.17.5",
-    "@babel/preset-env": "^7.16.11",
-    "@babel/preset-typescript": "^7.16.7",
-    "@types/babel__core": "^7",
-    "@types/babel__preset-env": "^7",
-    "@types/jest": "^27.4.0",
-    "@types/lodash": "^4.14.178",
-    "@types/node": "^14.18.10",
+    "@types/lodash": "^4.14.200",
+    "@types/node": "^20.0.0",
     "@types/pegjs": "^0.10.3",
-    "@typescript-eslint/eslint-plugin": "^4.33.0",
-    "@typescript-eslint/parser": "^4.33.0",
-    "babel-jest": "^27.5.1",
-    "eslint": "^7.32.0",
-    "jest": "^27.5.1",
     "pegjs": "^0.10.0",
-    "prettier": "^2.5.1",
-    "ts-node": "^9.1.1",
+    "ts-node": "^10.9.0",
     "ts-pegjs": "^0.3.1",
-    "typescript": "^4.5.5"
+    "typescript": "^5.3.0"
   },
   "files": [
     "dist",
     "README.md"
-  ],
-  "gitHead": "26eba522edf0c98cfd2a646ded8f4a4ab8e812fc"
+  ]
 }
