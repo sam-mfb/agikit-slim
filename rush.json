@@ -13,6 +13,10 @@
     {
       "packageName": "@agikit-slim/cli",
       "projectFolder": "packages/cli"
+    },
+    {
+      "packageName": "@agikit-slim/examples",
+      "projectFolder": "packages/examples"
     }
   ]
 }

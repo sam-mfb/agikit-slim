@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node-script
+#!/usr/bin/env node
 
 import { ResourceToExtract, ResourceType } from '@agikit-slim/core';
 import parseArgs, { ParsedArgs } from 'minimist';
