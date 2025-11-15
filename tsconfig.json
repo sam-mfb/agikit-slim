@@ -1,12 +1,20 @@
 {
   "compilerOptions": {
-    "composite": true
+    "composite": true,
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020"],
+    "declaration": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true
   },
   "references": [
     { "path": "packages/core" },
-    { "path": "packages/cli" },
-    { "path": "packages/logic-language-server" },
-    { "path": "packages/react-editors" }
+    { "path": "packages/cli" }
   ],
   "files": []
 }
