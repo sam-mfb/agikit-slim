@@ -11,6 +11,7 @@ export * from './Compression/Bitstreams';
 export * from './Compression/LZW';
 export * from './Extract/DetectGame';
 export * from './Extract/GameExtractor';
+export * from './Extract/Graphs';
 export * from './Extract/Logic/CodeGeneration';
 export * from './Extract/Logic/ReadLogic';
 export * from './Extract/Picture/PictureJSON';

@@ -187,7 +187,7 @@ export function formatKeyValuePairs<T>(obj: T | undefined, keys: (keyof T)[]): s
   }
 
   const pairs = keys
-    .map((key) => (obj[key] == null ? undefined : `${key}=${obj[key]}`))
+    .map((key) => (obj[key] == null ? undefined : `${String(key)}=${obj[key]}`))
     .filter(isPresent);
 
   if (pairs.length > 0) {

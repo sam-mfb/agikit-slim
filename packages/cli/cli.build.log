@@ -1,0 +1,5 @@
+Invoking: tsc --build 
+src/CLILogger.ts(1,24): error TS2307: Cannot find module '@agikit/core' or its corresponding type declarations.
+src/Commands/build.ts(1,41): error TS2307: Cannot find module '@agikit/core' or its corresponding type declarations.
+src/Commands/extract.ts(1,75): error TS2307: Cannot find module '@agikit/core' or its corresponding type declarations.
+src/cli.ts(3,49): error TS2307: Cannot find module '@agikit/core' or its corresponding type declarations.
