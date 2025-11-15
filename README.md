@@ -15,15 +15,35 @@ agikit aims to provide:
 - A platform to build other tooling, such as text editor extensions, language servers, etc.
 - A modern compiler architecture that allows for language extensions and optimization
 
-## Visual Studio Code usage
+## Development Setup
 
-Install the extension from: https://marketplace.visualstudio.com/items?itemName=nbudin.agikit-vscode
+This project uses [Rush.js](https://rushjs.io/) with pnpm for monorepo management.
 
-For some template code to start with, clone: https://github.com/nbudin/agikit-project-template
+### Prerequisites
+- Node.js >= 18.0.0
+- Rush installed globally: `npm install -g @microsoft/rush`
+
+### Getting Started
+
+```bash
+# Install dependencies
+rush update
+
+# Build all packages
+rush rebuild
+
+# Build only changed packages
+rush build
+```
+
+### Project Structure
+
+- `packages/core` - Core AGI compiler/decompiler library
+- `packages/cli` - Command-line interface
 
 ## Command line usage
 
-To install it:
+To install the CLI globally:
 
 `npm install -g @agikit/cli`
 
@@ -34,10 +54,6 @@ To extract an AGI game to source files:
 To build AGI game volume files from extracted source files:
 
 `agikit build path/to/project`
-
-To auto-format a LOGIC script:
-
-`agikit formatLogic path/to/scriptfile.agilogic`
 
 ## Current status
 
