@@ -1,6 +1,6 @@
 #!/usr/bin/env ts-node-script
 
-import { ResourceToExtract, ResourceType } from '@agikit/core';
+import { ResourceToExtract, ResourceType } from '@agikit-slim/core';
 import parseArgs, { ParsedArgs } from 'minimist';
 import { buildProject } from './Commands/build';
 import { extractGame } from './Commands/extract';

@@ -1,4 +1,4 @@
-import { Project, ProjectBuilder } from '@agikit/core';
+import { Project, ProjectBuilder } from '@agikit-slim/core';
 import { CLILogger } from '../CLILogger';
 
 export function buildProject(basePath: string) {

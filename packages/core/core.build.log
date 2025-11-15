@@ -1,5 +1,5 @@
 Invoking: pnpm run generate-parsers && tsc --build 
 
-> @agikit/core@1.0.0 generate-parsers /home/devuser/agikit-slim/packages/core
+> @agikit-slim/core@1.0.0 generate-parsers /home/devuser/agikit-slim/packages/core
 > ts-node src/Scripting/generateParsers.ts
 

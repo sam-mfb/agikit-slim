@@ -1,5 +1,5 @@
 {
-  "name": "@agikit/core",
+  "name": "@agikit-slim/core",
   "version": "1.0.0",
   "homepage": "https://github.com/nbudin/agikit",
   "main": "./dist/index.js",

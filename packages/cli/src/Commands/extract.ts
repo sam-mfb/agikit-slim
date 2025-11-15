@@ -1,4 +1,4 @@
-import { detectGame, ExtractorConfig, GameExtractor, ProjectConfig } from '@agikit/core';
+import { detectGame, ExtractorConfig, GameExtractor, ProjectConfig } from '@agikit-slim/core';
 import { CLILogger } from '../CLILogger';
 
 export function extractGame(
