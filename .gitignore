@@ -1,5 +1,10 @@
+# macOS
 .DS_Store
+
+# VS Code extension build
 *.vsix
+
+# Build outputs
 *.tsbuildinfo
 /extracted
 /build
@@ -10,24 +15,30 @@
 /packages/*/build
 /packages/*/reextracted
 /packages/*/coverage
-/packages/react-editors/dev-site-dist
-/lerna-debug.log
-node_modules
-yarn-error.log
-qtagistudio-*
 
+# Logs
+/lerna-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Rush
+common/temp/
+common/deploy/
+common/scripts/install-run.js
+common/scripts/install-run-rush.js
+.rush/
+
+# pnpm
+pnpm-lock.yaml
+
+# Old Yarn (no longer used)
 .pnp.*
 .yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
+yarn.lock
 
-/packages/*/.pnp.*
-/packages/*/.yarn/*
-!/packages/*/.yarn/patches
-!/packages/*/.yarn/plugins
-!/packages/*/.yarn/releases
-!/packages/*/.yarn/sdks
-!/packages/*/.yarn/versions
+# Test data
+qtagistudio-*
