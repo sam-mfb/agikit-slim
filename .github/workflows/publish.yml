@@ -46,8 +46,6 @@ jobs:
       #   run: rush test
 
       - name: Apply version bumps and publish to NPM
-        run: rush publish --apply --publish --include-all --set-access-level public --target-branch main
+        run: rush publish --apply --publish --set-access-level public --target-branch main
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        # NOTE: First-time publishes will fail due to Rush regression (npm view returns 404).
-        # Workaround: Manually publish packages once, then this workflow works for all future releases.
