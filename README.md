@@ -22,7 +22,7 @@ This project uses [Rush.js](https://rushjs.io/) with pnpm for monorepo managemen
 
 ### Prerequisites
 
-- Node.js >= 18.0.0
+- Node.js >= 20.0.0
 - Rush installed globally: `npm install -g @microsoft/rush`
 
 ### Getting Started
