@@ -52,28 +52,24 @@ rush format:check
 
 ### Publishing
 
-This project uses Rush's version management and publishing workflow:
+Packages are automatically published to npm when a GitHub release is created.
 
-```bash
-# After making changes, create a change file
-rush change
+**To publish a new version:**
 
-# The change file will be used during release to:
-# - Generate changelogs
-# - Determine version bumps
-# - Track what changed in each release
-```
+1. Update version numbers in package.json files:
+   - `packages/core/package.json`
+   - `packages/cli/package.json`
+2. Commit the version changes
+3. Push to GitHub
+4. Create a new GitHub release with a tag (e.g., `v1.0.1`)
+5. GitHub Actions will automatically:
+   - Build all packages
+   - Run formatting checks
+   - Publish to npm with public access
 
-Packages are automatically published to npm when a GitHub release is created. The workflow:
-
-1. Developer creates change files using `rush change`
-2. Maintainer creates a GitHub release
-3. GitHub Actions automatically:
-   - Applies version bumps
-   - Generates changelogs
-   - Builds packages
-   - Publishes to npm
-   - Commits version updates back to the repository
+The packages will be published to:
+- https://www.npmjs.com/package/@agikit-slim/core
+- https://www.npmjs.com/package/@agikit-slim/cli
 
 ## Command line usage
 
