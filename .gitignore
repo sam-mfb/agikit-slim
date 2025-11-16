@@ -29,8 +29,6 @@ node_modules/
 # Rush
 common/temp/
 common/deploy/
-common/scripts/install-run.js
-common/scripts/install-run-rush.js
 .rush/
 
 # pnpm
