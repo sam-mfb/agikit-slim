@@ -46,6 +46,6 @@ jobs:
       #   run: rush test
 
       - name: Apply version bumps and publish to NPM
-        run: rush publish --apply --publish --target-branch main --set-access-level public
+        run: rush publish --apply --publish --target-branch main --include-all --set-access-level public
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
