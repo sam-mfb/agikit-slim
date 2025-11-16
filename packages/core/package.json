@@ -1,8 +1,30 @@
 {
   "name": "@agikit-slim/core",
   "version": "1.0.0",
+  "description": "Core library for AGI game scripting, compilation, and resource extraction",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "license": "GPL-2.0",
+  "author": "Sam Davidoff <sam@mfbtech.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sam-mfb/agikit-slim.git",
+    "directory": "packages/core"
+  },
+  "keywords": [
+    "agi",
+    "adventure-game-interpreter",
+    "sierra",
+    "game-development",
+    "retro-gaming",
+    "logic-scripting"
+  ],
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "pnpm run generate-parsers && tsc",
     "generate-parsers": "ts-node src/Scripting/generateParsers.ts",

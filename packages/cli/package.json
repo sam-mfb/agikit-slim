@@ -3,6 +3,22 @@
   "version": "1.0.0",
   "description": "Command line tools for compiling and decompiling AGI games",
   "main": "dist/cli.js",
+  "license": "GPL-2.0",
+  "author": "Sam Davidoff <sam@mfbtech.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sam-mfb/agikit-slim.git",
+    "directory": "packages/cli"
+  },
+  "keywords": [
+    "agi",
+    "adventure-game-interpreter",
+    "sierra",
+    "cli",
+    "compiler",
+    "decompiler",
+    "retro-gaming"
+  ],
   "directories": {
     "src": "src"
   },
@@ -11,6 +27,9 @@
   ],
   "bin": {
     "agikit": "dist/cli.js"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "tsc",

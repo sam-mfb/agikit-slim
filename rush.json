@@ -8,15 +8,20 @@
   "projects": [
     {
       "packageName": "@agikit-slim/core",
-      "projectFolder": "packages/core"
+      "projectFolder": "packages/core",
+      "versionPolicyName": "agikit-slim-core",
+      "shouldPublish": true
     },
     {
       "packageName": "@agikit-slim/cli",
-      "projectFolder": "packages/cli"
+      "projectFolder": "packages/cli",
+      "versionPolicyName": "agikit-slim-cli",
+      "shouldPublish": true
     },
     {
       "packageName": "@agikit-slim/examples",
-      "projectFolder": "packages/examples"
+      "projectFolder": "packages/examples",
+      "shouldPublish": false
     }
   ]
 }

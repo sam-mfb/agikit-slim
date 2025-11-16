@@ -1,0 +1,12 @@
+[
+  {
+    "definitionName": "individualVersion",
+    "policyName": "agikit-slim-core",
+    "lockedMajor": 1
+  },
+  {
+    "definitionName": "individualVersion",
+    "policyName": "agikit-slim-cli",
+    "lockedMajor": 1
+  }
+]

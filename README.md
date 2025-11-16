@@ -36,6 +36,12 @@ rush rebuild
 
 # Build only changed packages
 rush build
+
+# Format code
+rush format
+
+# Check code formatting
+rush format:check
 ```
 
 ### Project Structure
@@ -43,6 +49,31 @@ rush build
 - `packages/core` - Core AGI compiler/decompiler library
 - `packages/cli` - Command-line interface
 - `packages/examples` - Example AGI applications in English and Hebrew that can be used for testing
+
+### Publishing
+
+This project uses Rush's version management and publishing workflow:
+
+```bash
+# After making changes, create a change file
+rush change
+
+# The change file will be used during release to:
+# - Generate changelogs
+# - Determine version bumps
+# - Track what changed in each release
+```
+
+Packages are automatically published to npm when a GitHub release is created. The workflow:
+
+1. Developer creates change files using `rush change`
+2. Maintainer creates a GitHub release
+3. GitHub Actions automatically:
+   - Applies version bumps
+   - Generates changelogs
+   - Builds packages
+   - Publishes to npm
+   - Commits version updates back to the repository
 
 ## Command line usage
 
