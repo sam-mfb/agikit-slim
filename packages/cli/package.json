@@ -2,9 +2,6 @@
   "name": "@agikit-slim/cli",
   "version": "1.0.0",
   "description": "Command line tools for compiling and decompiling AGI games",
-  "author": "Nat Budin <natbudin@gmail.com>",
-  "homepage": "https://github.com/nbudin/agikit#readme",
-  "license": "MIT",
   "main": "dist/cli.js",
   "directories": {
     "src": "src"
@@ -15,16 +12,9 @@
   "bin": {
     "agikit": "dist/cli.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nbudin/agikit.git"
-  },
   "scripts": {
     "build": "tsc --build",
     "clean": "rm -rf dist"
-  },
-  "bugs": {
-    "url": "https://github.com/nbudin/agikit/issues"
   },
   "dependencies": {
     "@agikit-slim/core": "workspace:*",
