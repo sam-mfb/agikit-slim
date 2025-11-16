@@ -7,7 +7,5 @@
 /packages/*/extracted
 /packages/*/build
 /packages/*/reextracted
-/lerna-debug.log
 node_modules
-yarn-error.log
 qtagistudio-*
