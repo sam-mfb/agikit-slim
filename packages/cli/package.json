@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Command line tools for compiling and decompiling AGI games",
   "main": "dist/cli.js",
-  "license": "GPL-2.0",
+  "license": "SEE LICENSE IN LICENSE",
   "author": "Sam Davidoff <sam@mfbtech.com>",
   "repository": {
     "type": "git",

@@ -1,0 +1,75 @@
+# License
+
+This project has a complex licensing history due to its origins. Please read carefully.
+
+## Code Written by Sam Davidoff (2025-present)
+
+All original code written by Sam Davidoff for this project is licensed under the MIT License:
+
+```
+MIT License
+
+Copyright (c) 2025 Sam Davidoff
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+## Code from agikit (Nat Budin)
+
+This project is a fork of https://github.com/nbudin/agikit by Nat Budin.
+
+**License Status:** The original agikit repository does not contain explicit license
+information. Users should contact the original author (Nat Budin) or consult the
+original repository for licensing terms before using or distributing code that
+originated from that project.
+
+## Code from AGI Studio
+
+Portions of the code in the `packages/core` directory may be derived from or based
+on AGI Studio (https://agistudio.sourceforge.net/), which is licensed under GPL-2.0.
+
+**License:** GNU General Public License v2.0
+
+Due to the uncertain provenance of code in `packages/core`, it is possible that some
+or all of that code may be subject to GPL-2.0 licensing terms.
+
+If you intend to use or distribute portions of this codebase that include code from
+the `packages/core` directory, you should:
+1. Assume GPL-2.0 applies to that code
+2. Verify the licensing of the original AGI Studio project
+3. Consult with a legal professional if needed
+
+The full text of GPL-2.0 can be found at: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+## Summary
+
+- **packages/cli/**: Code written by Sam Davidoff - MIT License (with exceptions for
+  any code derived from agikit or AGI Studio)
+- **packages/core/**: Mixed provenance - potentially GPL-2.0 from AGI Studio,
+  unclear license from agikit, MIT for Sam Davidoff's contributions
+- **packages/examples/**: Example game files - MIT License
+
+## Recommendation
+
+Given the licensing complexity, if you plan to use this project:
+
+1. For personal/educational use: Proceed with awareness of the mixed licensing
+2. For commercial use: Conduct thorough license verification of all components
+3. For derivative works: Assume GPL-2.0 applies to be safe, or isolate MIT-licensed
+   components

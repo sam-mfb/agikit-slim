@@ -4,7 +4,7 @@
   "description": "Core library for AGI game scripting, compilation, and resource extraction",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "license": "GPL-2.0",
+  "license": "SEE LICENSE IN LICENSE",
   "author": "Sam Davidoff <sam@mfbtech.com>",
   "repository": {
     "type": "git",
