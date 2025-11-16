@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@agikit-slim/core",
-      "comment": "Initial release of agikit-slim core library",
-      "type": "major"
+      "comment": "Fix published package to use correct dependency versions instead of workspace:* protocol",
+      "type": "patch"
     }
   ],
   "packageName": "@agikit-slim/core",

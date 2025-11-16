@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@agikit-slim/cli",
-      "comment": "Initial release of agikit-slim CLI tools",
-      "type": "major"
+      "comment": "Fix published package to use correct dependency versions instead of workspace:* protocol",
+      "type": "patch"
     }
   ],
   "packageName": "@agikit-slim/cli",
