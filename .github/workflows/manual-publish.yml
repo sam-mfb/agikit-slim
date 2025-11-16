@@ -1,0 +1,72 @@
+name: Manual Publish to NPM
+
+on:
+  workflow_dispatch:
+    inputs:
+      publish_core:
+        description: 'Publish @agikit-slim/core'
+        required: true
+        type: boolean
+        default: true
+      publish_cli:
+        description: 'Publish @agikit-slim/cli'
+        required: true
+        type: boolean
+        default: true
+
+jobs:
+  manual-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.node-version'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Rush
+        run: npm install -g @microsoft/rush
+
+      - name: Install dependencies
+        run: rush install
+
+      - name: Build all packages
+        run: rush rebuild
+
+      - name: Publish @agikit-slim/core
+        if: ${{ inputs.publish_core }}
+        run: |
+          cd packages/core
+          echo "Publishing @agikit-slim/core..."
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @agikit-slim/cli
+        if: ${{ inputs.publish_cli }}
+        run: |
+          cd packages/cli
+          echo "Publishing @agikit-slim/cli..."
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Summary
+        run: |
+          echo "### Published Packages :rocket:" >> $GITHUB_STEP_SUMMARY
+          if [[ "${{ inputs.publish_core }}" == "true" ]]; then
+            echo "- ✅ @agikit-slim/core" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [[ "${{ inputs.publish_cli }}" == "true" ]]; then
+            echo "- ✅ @agikit-slim/cli" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Check packages at:" >> $GITHUB_STEP_SUMMARY
+          echo "- https://www.npmjs.com/package/@agikit-slim/core" >> $GITHUB_STEP_SUMMARY
+          echo "- https://www.npmjs.com/package/@agikit-slim/cli" >> $GITHUB_STEP_SUMMARY
