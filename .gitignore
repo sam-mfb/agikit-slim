@@ -31,8 +31,8 @@ common/temp/
 common/deploy/
 .rush/
 
-# pnpm
-pnpm-lock.yaml
+# pnpm (ignore package-level lock files, but NOT the Rush shrinkwrap)
+/packages/*/pnpm-lock.yaml
 
 # Old Yarn (no longer used)
 .pnp.*
