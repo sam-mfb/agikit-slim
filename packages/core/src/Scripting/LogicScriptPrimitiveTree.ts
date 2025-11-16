@@ -33,8 +33,8 @@ export function simplifyLogicScriptStatement(
       statement.value.type === 'Literal'
         ? 'Literal'
         : parseTree.identifiers.get(statement.value.name)?.identifierType === 'constant'
-        ? 'Literal'
-        : 'Identifier';
+          ? 'Literal'
+          : 'Identifier';
     const replacementStatement: LogicScriptCommandCall = {
       type: 'CommandCall',
       commandName: valueType === 'Literal' ? 'assignn' : 'assignv',

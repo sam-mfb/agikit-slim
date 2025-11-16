@@ -11,7 +11,7 @@ export type NodeVisitor<NodeType> = (block: NodeType, parent?: NodeType) => void
 
 export abstract class Graph<
   NodeType extends GraphNode,
-  EdgeType extends GraphEdge<NodeType> = GraphEdge<NodeType>
+  EdgeType extends GraphEdge<NodeType> = GraphEdge<NodeType>,
 > {
   root: NodeType;
   protected nodeIndex: Map<string, NodeType>;

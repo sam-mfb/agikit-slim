@@ -1,0 +1,9 @@
+{
+  "name": "rush-prettier",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Prettier autoinstaller for the agikit-slim monorepo",
+  "dependencies": {
+    "prettier": "^3.2.5"
+  }
+}

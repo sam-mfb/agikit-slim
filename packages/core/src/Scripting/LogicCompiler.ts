@@ -40,9 +40,10 @@ type CompiledBlock = SinglePathCompiledBlock | ConditionalCompiledBlock;
 
 type StitchedBlock = LogicInstruction[];
 
-type PostCompilationPass = (
-  instructions: LogicInstruction[],
-) => { instructions: LogicInstruction[]; changed: boolean };
+type PostCompilationPass = (instructions: LogicInstruction[]) => {
+  instructions: LogicInstruction[];
+  changed: boolean;
+};
 
 const removeUnreachableInstructions: PostCompilationPass = (instructions) => {
   let changed = false;

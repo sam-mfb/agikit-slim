@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/command-line.schema.json",
+  "commands": [
+    {
+      "name": "format",
+      "commandKind": "global",
+      "summary": "Format all source files using Prettier",
+      "description": "Runs Prettier with --write on all packages to format code according to the repository's formatting rules.",
+      "safeForSimultaneousRushProcesses": true,
+      "autoinstallerName": "rush-prettier",
+      "shellCommand": "prettier --write \"packages/*/src/**/*.{ts,tsx,js,jsx,json,md}\""
+    },
+    {
+      "name": "format:check",
+      "commandKind": "global",
+      "summary": "Check if all source files are formatted correctly",
+      "description": "Runs Prettier with --check on all packages to verify code formatting without making changes. Useful for CI/CD pipelines.",
+      "safeForSimultaneousRushProcesses": true,
+      "autoinstallerName": "rush-prettier",
+      "shellCommand": "prettier --check \"packages/*/src/**/*.{ts,tsx,js,jsx,json,md}\""
+    }
+  ],
+  "parameters": []
+}

@@ -40,68 +40,68 @@ export const PictureCommandOpcodes = {
 
 export type SetPictureColorPictureCommand = {
   type: 'SetPictureColor';
-  opcode: typeof PictureCommandOpcodes['SetPictureColor'];
+  opcode: (typeof PictureCommandOpcodes)['SetPictureColor'];
   colorNumber: number;
 };
 
 export type DisablePictureDrawPictureCommand = {
   type: 'DisablePictureDraw';
-  opcode: typeof PictureCommandOpcodes['DisablePictureDraw'];
+  opcode: (typeof PictureCommandOpcodes)['DisablePictureDraw'];
 };
 
 export type SetPriorityColorPictureCommand = {
   type: 'SetPriorityColor';
-  opcode: typeof PictureCommandOpcodes['SetPriorityColor'];
+  opcode: (typeof PictureCommandOpcodes)['SetPriorityColor'];
   colorNumber: number;
 };
 
 export type DisablePriorityDrawPictureCommand = {
   type: 'DisablePriorityDraw';
-  opcode: typeof PictureCommandOpcodes['DisablePriorityDraw'];
+  opcode: (typeof PictureCommandOpcodes)['DisablePriorityDraw'];
 };
 
 export type DrawYCornerPictureCommand = {
   type: 'DrawYCorner';
-  opcode: typeof PictureCommandOpcodes['DrawYCorner'];
+  opcode: (typeof PictureCommandOpcodes)['DrawYCorner'];
   startPosition: PictureCoordinate;
   steps: PictureCornerStep[];
 };
 
 export type DrawXCornerPictureCommand = {
   type: 'DrawXCorner';
-  opcode: typeof PictureCommandOpcodes['DrawXCorner'];
+  opcode: (typeof PictureCommandOpcodes)['DrawXCorner'];
   startPosition: PictureCoordinate;
   steps: PictureCornerStep[];
 };
 
 export type AbsoluteLinePictureCommand = {
   type: 'AbsoluteLine';
-  opcode: typeof PictureCommandOpcodes['AbsoluteLine'];
+  opcode: (typeof PictureCommandOpcodes)['AbsoluteLine'];
   points: PictureCoordinate[];
 };
 
 export type RelativeLinePictureCommand = {
   type: 'RelativeLine';
-  opcode: typeof PictureCommandOpcodes['RelativeLine'];
+  opcode: (typeof PictureCommandOpcodes)['RelativeLine'];
   startPosition: PictureCoordinate;
   relativePoints: PictureCoordinate[];
 };
 
 export type FillPictureCommand = {
   type: 'Fill';
-  opcode: typeof PictureCommandOpcodes['Fill'];
+  opcode: (typeof PictureCommandOpcodes)['Fill'];
   startPositions: PictureCoordinate[];
 };
 
 export type ChangePenPictureCommand = {
   type: 'ChangePen';
-  opcode: typeof PictureCommandOpcodes['ChangePen'];
+  opcode: (typeof PictureCommandOpcodes)['ChangePen'];
   settings: PicturePenSettings;
 };
 
 export type PlotWithPenPictureCommand = {
   type: 'PlotWithPen';
-  opcode: typeof PictureCommandOpcodes['PlotWithPen'];
+  opcode: (typeof PictureCommandOpcodes)['PlotWithPen'];
   points: PicturePenPlotPoint[];
 };
 

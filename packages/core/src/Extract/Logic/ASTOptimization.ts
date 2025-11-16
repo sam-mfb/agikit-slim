@@ -2,9 +2,7 @@ import { LogicASTNode, LogicCommandNode, LogicGotoNode, LogicIfNode } from './Lo
 import { BasicBlock, replaceEdge, removeEdge, BasicBlockGraph } from './ControlFlowAnalysis';
 import { NodeVisitor } from '../Graphs';
 
-export type BlockVisitor = (
-  ...params: Parameters<NodeVisitor<BasicBlock>>
-) => {
+export type BlockVisitor = (...params: Parameters<NodeVisitor<BasicBlock>>) => {
   changed: boolean;
 };
 

@@ -67,18 +67,14 @@ type BinaryOrContainingAnd = EitherWayOr<
   BinaryExpression
 >;
 
-type FindAndClause<T extends BinaryOrContainingAnd> = T extends BinaryOr<
-  BinaryAnd<BinaryExpression, BinaryExpression>,
-  BinaryExpression
->
-  ? T['clauses'][0]
-  : T['clauses'][1];
-type FindNonAndClause<T extends BinaryOrContainingAnd> = T extends BinaryOr<
-  BinaryAnd<BinaryExpression, BinaryExpression>,
-  BinaryExpression
->
-  ? T['clauses'][1]
-  : T['clauses'][0];
+type FindAndClause<T extends BinaryOrContainingAnd> =
+  T extends BinaryOr<BinaryAnd<BinaryExpression, BinaryExpression>, BinaryExpression>
+    ? T['clauses'][0]
+    : T['clauses'][1];
+type FindNonAndClause<T extends BinaryOrContainingAnd> =
+  T extends BinaryOr<BinaryAnd<BinaryExpression, BinaryExpression>, BinaryExpression>
+    ? T['clauses'][1]
+    : T['clauses'][0];
 
 export type StrictNotExpression = {
   type: 'StrictNotExpression';
@@ -453,13 +449,12 @@ function distributeStrictOrOverAnd(
 }
 
 function concatenateOr(expression: SimpleConcatenatableOr): StrictOrExpression {
-  const orClause = (expression.clauses[0].type === 'BinaryOr'
-    ? expression.clauses[0]
-    : expression.clauses[1]) as BinaryOr<IrreducibleBinaryExpression, IrreducibleBinaryExpression>;
+  const orClause = (
+    expression.clauses[0].type === 'BinaryOr' ? expression.clauses[0] : expression.clauses[1]
+  ) as BinaryOr<IrreducibleBinaryExpression, IrreducibleBinaryExpression>;
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const irreducibleClause: IrreducibleBinaryExpression = expression.clauses.find(
-    isIrreducibleExpression,
-  )!;
+  const irreducibleClause: IrreducibleBinaryExpression =
+    expression.clauses.find(isIrreducibleExpression)!;
 
   return {
     type: 'StrictOrExpression',
@@ -468,13 +463,12 @@ function concatenateOr(expression: SimpleConcatenatableOr): StrictOrExpression {
 }
 
 function concatenateAnd(expression: SimpleConcatenatableAnd): StrictAndExpression {
-  const andClause = (expression.clauses[0].type === 'BinaryAnd'
-    ? expression.clauses[0]
-    : expression.clauses[1]) as BinaryAnd<IrreducibleBinaryExpression, IrreducibleBinaryExpression>;
+  const andClause = (
+    expression.clauses[0].type === 'BinaryAnd' ? expression.clauses[0] : expression.clauses[1]
+  ) as BinaryAnd<IrreducibleBinaryExpression, IrreducibleBinaryExpression>;
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const irreducibleClause: IrreducibleBinaryExpression = expression.clauses.find(
-    isIrreducibleExpression,
-  )!;
+  const irreducibleClause: IrreducibleBinaryExpression =
+    expression.clauses.find(isIrreducibleExpression)!;
 
   return {
     type: 'StrictAndExpression',

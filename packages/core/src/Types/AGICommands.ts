@@ -34,7 +34,10 @@ export const testCommands = testCommandsData as TestCommand[];
 const agiCommandsByOpcode = keyBy(agiCommands, (cmd) => cmd.opcode);
 const testCommandsByOpcode = keyBy(testCommands, (cmd) => cmd.opcode);
 export const agiCommandsByName: Record<string, AGICommand> = keyBy(agiCommands, (cmd) => cmd.name);
-export const testCommandsByName: Record<string, TestCommand> = keyBy(testCommands, (cmd) => cmd.name);
+export const testCommandsByName: Record<string, TestCommand> = keyBy(
+  testCommands,
+  (cmd) => cmd.name,
+);
 
 export function getAGICommand(opcode: number, agiVersion: AGIVersion): AGICommand | undefined {
   if (opcode > 177 && (agiVersion.major < 3 || agiVersion.minor <= 2086)) {
