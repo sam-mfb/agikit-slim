@@ -30,6 +30,9 @@ jobs:
           node-version-file: '.node-version'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Install pnpm
+        run: npm install -g pnpm@8.15.1
+
       - name: Install Rush
         run: npm install -g @microsoft/rush
 
@@ -39,23 +42,23 @@ jobs:
       - name: Build all packages
         run: rush rebuild
 
+      - name: Configure npm authentication
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
       - name: Publish @agikit-slim/core
         if: ${{ inputs.publish_core }}
         run: |
           cd packages/core
           echo "Publishing @agikit-slim/core..."
-          npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          pnpm publish --access public --no-git-checks
 
       - name: Publish @agikit-slim/cli
         if: ${{ inputs.publish_cli }}
         run: |
           cd packages/cli
           echo "Publishing @agikit-slim/cli..."
-          npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          pnpm publish --access public --no-git-checks
 
       - name: Summary
         run: |
