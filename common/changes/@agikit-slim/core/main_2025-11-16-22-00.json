@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@agikit-slim/core",
+      "comment": "Add README",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@agikit-slim/core"
+}
