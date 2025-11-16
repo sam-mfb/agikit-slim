@@ -26,7 +26,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "pnpm run generate-parsers && tsc",
+    "build": "npm run generate-parsers && tsc",
     "generate-parsers": "ts-node src/Scripting/generateParsers.ts",
     "clean": "rm -rf dist"
   },
