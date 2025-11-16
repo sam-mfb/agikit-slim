@@ -4,7 +4,9 @@ agikit-slim is a fork of the original agikit toolchain here:
 
 https://github.com/nbudin/agikit
 
-The purpose of the fork is to focus solely on decompiling and compiling and not any user interface issues. This makes it easier to keep dependencies up to date and to add new features. The particular feature I forked in order to add is foreign-language encoding for translations. I tried to develop a PR for the original package, but its development toolchain is somewhat out of date and one I'm not familiar with...
+The purpose of the fork is to focus solely on decompiling and compiling and not any user interface issues. This makes it easier to keep dependencies up to date and to add new features.
+
+The particular feature I forked in order to add is foreign-language encoding for translations. I tried to develop a PR for the original package, but its development toolchain is somewhat out of date and one I'm not familiar with...
 
 ## Background
 
@@ -40,6 +42,7 @@ rush build
 
 - `packages/core` - Core AGI compiler/decompiler library
 - `packages/cli` - Command-line interface
+- `packages/examples` - Example AGI applications in English and Hebrew that can be used for testing
 
 ## Command line usage
 
@@ -56,6 +59,11 @@ To build AGI game volume files from extracted source files:
 `agikit build path/to/project`
 
 ## Current status
+
+Todo Priorities:
+
+- Add ability to compile with other language encodings
+- Add additional command line options
 
 Known limitations:
 
