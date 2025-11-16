@@ -1,0 +1,25 @@
+{
+  "name": "@agikit-slim/cli",
+  "entries": [
+    {
+      "version": "1.0.1",
+      "tag": "@agikit-slim/cli_v1.0.1",
+      "date": "Sun, 16 Nov 2025 22:02:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix published package to use correct dependency versions instead of workspace:* protocol"
+          },
+          {
+            "comment": "Add README"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@agikit-slim/core\" to `1.0.1`"
+          }
+        ]
+      }
+    }
+  ]
+}
