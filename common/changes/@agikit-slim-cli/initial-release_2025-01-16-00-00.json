@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@agikit-slim/cli",
+      "comment": "Initial release of agikit-slim CLI tools",
+      "type": "major"
+    }
+  ],
+  "packageName": "@agikit-slim/cli",
+  "email": "sam@mfbtech.com"
+}

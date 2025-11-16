@@ -45,7 +45,7 @@ jobs:
       # - name: Run tests
       #   run: rush test
 
-      - name: Publish to NPM
-        run: rush publish --publish --set-access-level public
+      - name: Apply version bumps and publish to NPM
+        run: rush publish --apply --publish --set-access-level public
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

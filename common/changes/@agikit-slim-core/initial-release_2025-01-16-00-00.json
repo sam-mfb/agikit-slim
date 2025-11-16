@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@agikit-slim/core",
+      "comment": "Initial release of agikit-slim core library",
+      "type": "major"
+    }
+  ],
+  "packageName": "@agikit-slim/core",
+  "email": "sam@mfbtech.com"
+}

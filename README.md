@@ -52,19 +52,31 @@ rush format:check
 
 ### Publishing
 
-Packages are automatically published to npm when a GitHub release is created.
+This project uses Rush's change file workflow for version management.
 
-**To publish a new version:**
+**Developer workflow (before creating PR):**
 
-1. Update version numbers in package.json files:
-   - `packages/core/package.json`
-   - `packages/cli/package.json`
-2. Commit the version changes
-3. Push to GitHub
-4. Create a new GitHub release with a tag (e.g., `v1.0.1`)
-5. GitHub Actions will automatically:
+After making changes to a package, create a change file:
+```bash
+rush change
+```
+
+This will prompt you to:
+- Select which packages changed
+- Choose the version bump type (major/minor/patch)
+- Describe your changes
+
+Commit the generated change file (in `common/changes/`) with your PR.
+
+**Maintainer workflow (publishing a release):**
+
+1. Merge PRs to main (each should include change files)
+2. Create a new GitHub release with a tag (e.g., `v1.0.1`)
+3. GitHub Actions will automatically:
+   - Process all change files
+   - Bump package versions accordingly
+   - Generate/update CHANGELOGs
    - Build all packages
-   - Run formatting checks
    - Publish to npm with public access
 
 The packages will be published to:
