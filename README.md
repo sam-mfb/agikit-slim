@@ -89,19 +89,47 @@ To install the CLI globally:
 
 `npm install -g @agikit-slim/cli`
 
-To extract an AGI game to source files:
+### Extract an AGI game to source files
 
 `agikit extract path/to/game output/path`
 
-To build AGI game volume files from extracted source files:
+This will extract all resources including:
+- Logic scripts (to `.agilogic` files)
+- Pictures (to `.agipic` JSON files)
+- Views (to `.agiview` binary files, with `.agiviewdesc` text files for descriptions)
+- Sounds (to `.agisound` files)
+- Objects and vocabulary
 
-`agikit build path/to/project`
+### Build AGI game volume files from source
+
+`agikit build path/to/project [--encoding <encoding>]`
+
+Builds the game from source files. The `--encoding` parameter allows you to specify the character encoding for text (default: `ascii`).
+
+**Encoding examples:**
+- `agikit build myproject --encoding windows-1255` (Hebrew)
+- `agikit build myproject --encoding windows-1251` (Russian/Cyrillic)
+- `agikit build myproject --encoding windows-1252` (Western European)
+
+The encoding affects:
+- Object names in `object.json`
+- View descriptions in `.agiviewdesc` files
+- Any text in logic scripts
+
+### Decompile a single view file
+
+`agikit decompile-view path/to/view.agv [outputdir]`
+
+Extracts a single view resource to:
+- `<name>.agiview` - Binary pixel data
+- `<name>.agiviewdesc` - UTF-8 text description (if the view has one)
+
+If `outputdir` is not specified, files are created in the same directory as the input file.
 
 ## Current status
 
 Todo Priorities:
 
-- Add ability to compile with other language encodings
 - Add additional command line options
 
 Known limitations:
