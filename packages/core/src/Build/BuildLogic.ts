@@ -37,7 +37,10 @@ export function assembleLogic(
   encoding: string = 'ascii',
 ): Buffer {
   const assembler = new LogicAssembler(instructions);
-  const logic = encodeLogic(assembler.assemble(), encodeMessages(messages, encryptMessages, encoding));
+  const logic = encodeLogic(
+    assembler.assemble(),
+    encodeMessages(messages, encryptMessages, encoding),
+  );
   return logic;
 }
 

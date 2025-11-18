@@ -2,7 +2,11 @@ import { readViewResource, buildView } from '@agikit-slim/core';
 import * as fs from 'fs';
 import * as path from 'path';
 
-export function compileView(viewPath: string, outputPath?: string, encoding: string = 'ascii'): void {
+export function compileView(
+  viewPath: string,
+  outputPath?: string,
+  encoding: string = 'ascii',
+): void {
   // Read the binary view file
   const viewData = fs.readFileSync(viewPath);
   const view = readViewResource(viewData);

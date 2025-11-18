@@ -165,11 +165,7 @@ export class ProjectBuilder {
     const view = readViewResource(viewData);
 
     // Check for a description file
-    const descPath = path.join(
-      this.project.sourcePath,
-      'view',
-      `${resourceNumber}.agiviewdesc`,
-    );
+    const descPath = path.join(this.project.sourcePath, 'view', `${resourceNumber}.agiviewdesc`);
 
     if (fs.existsSync(descPath)) {
       this.logger.log(`Merging description from ${path.relative(this.project.basePath, descPath)}`);

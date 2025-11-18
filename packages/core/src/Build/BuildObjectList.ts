@@ -5,7 +5,9 @@ import { ObjectList } from '../Types/ObjectList';
 import { encodeUInt16LE } from '../DataEncoding';
 
 export function buildObjectList(objectList: ObjectList, encoding: string = 'ascii'): Buffer {
-  const objectNames = objectList.objects.map((object) => iconv.encode(`${object.name}\0`, encoding));
+  const objectNames = objectList.objects.map((object) =>
+    iconv.encode(`${object.name}\0`, encoding),
+  );
   const headerLength = objectList.objects.length * 3;
   let objectOffset = 0;
   const objectHeaders = flatMap(objectList.objects, (object, index) => {

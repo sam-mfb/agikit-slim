@@ -214,7 +214,7 @@ describe('View Round-Trip Integration Tests', () => {
 
       const encodings = ['ascii', 'windows-1251', 'windows-1252', 'windows-1255'];
 
-      encodings.forEach(encoding => {
+      encodings.forEach((encoding) => {
         const built = buildView(view, encoding);
         const readBack = readViewResource(built);
 
@@ -227,7 +227,7 @@ describe('View Round-Trip Integration Tests', () => {
 
       const encodings = ['ascii', 'windows-1251', 'windows-1252', 'windows-1255'];
 
-      encodings.forEach(encoding => {
+      encodings.forEach((encoding) => {
         const built = buildView(view, encoding);
         const readBack = readViewResource(built);
 
@@ -241,7 +241,7 @@ describe('View Round-Trip Integration Tests', () => {
 
       const encodings = ['ascii', 'windows-1251', 'windows-1252', 'windows-1255'];
 
-      encodings.forEach(encoding => {
+      encodings.forEach((encoding) => {
         const built = buildView(view, encoding);
         const readBack = readViewResource(built);
         const readBackCel = readBack.loops[0].cels[0];

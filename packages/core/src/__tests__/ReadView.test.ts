@@ -89,7 +89,7 @@ describe('readViewResource', () => {
       // Check if it's a non-mirrored cel (which has buffer)
       if (!firstCel.mirrored) {
         // Pixel data should be an array of numbers (color indices)
-        Array.from(firstCel.buffer).forEach(pixel => {
+        Array.from(firstCel.buffer).forEach((pixel) => {
           expect(typeof pixel).toBe('number');
           expect(pixel).toBeGreaterThanOrEqual(0);
           expect(pixel).toBeLessThanOrEqual(15); // AGI uses 4-bit color (0-15)

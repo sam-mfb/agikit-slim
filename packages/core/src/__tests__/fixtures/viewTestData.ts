@@ -18,23 +18,19 @@ const fixturesDir = __dirname;
 /**
  * Original compiled view file (707 bytes)
  */
-export const VIEW220_ORIGINAL_BINARY = fs.readFileSync(
-  path.join(fixturesDir, 'View220.agv')
-);
+export const VIEW220_ORIGINAL_BINARY = fs.readFileSync(path.join(fixturesDir, 'View220.agv'));
 
 /**
  * Decompiled view binary (without description)
  */
-export const VIEW220_BINARY = fs.readFileSync(
-  path.join(fixturesDir, 'View220.agiview')
-);
+export const VIEW220_BINARY = fs.readFileSync(path.join(fixturesDir, 'View220.agiview'));
 
 /**
  * View description in UTF-8
  */
 export const VIEW220_DESCRIPTION = fs.readFileSync(
   path.join(fixturesDir, 'View220.agiviewdesc'),
-  'utf-8'
+  'utf-8',
 );
 
 /**
@@ -48,7 +44,7 @@ export const VIEW220_EXPECTED_DESCRIPTION =
  * "זהו טופס הזמנה שהסרת ממגזין עבור משרוקית הזדווגות של חיית הטרור הלביון בחינם. הוא מוכן למשלוח."
  */
 export const VIEW220_HEBREW_DESCRIPTION =
-  "זהו טופס הזמנה שהסרת ממגזין עבור משרוקית הזדווגות של חיית הטרור הלביון בחינם. הוא מוכן למשלוח.";
+  'זהו טופס הזמנה שהסרת ממגזין עבור משרוקית הזדווגות של חיית הטרור הלביון בחינם. הוא מוכן למשלוח.';
 
 /**
  * Expected byte sequence for Hebrew description when encoded with windows-1255
