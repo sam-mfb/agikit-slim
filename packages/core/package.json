@@ -28,7 +28,10 @@
   "scripts": {
     "build": "npm run generate-parsers && tsc",
     "generate-parsers": "ts-node src/Scripting/generateParsers.ts",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "assert-never": "^1.2.1",
@@ -42,9 +45,11 @@
     "@types/lodash": "^4.14.200",
     "@types/node": "^20.0.0",
     "@types/pegjs": "^0.10.3",
+    "@vitest/coverage-v8": "^1.0.0",
     "pegjs": "^0.10.0",
     "ts-node": "^10.9.0",
     "ts-pegjs": "^0.3.1",
-    "typescript": "^5.3.0"
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0"
   }
 }
