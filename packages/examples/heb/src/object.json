@@ -8,6 +8,10 @@
     {
       "name": "חפץ בדיקה",
       "startingRoomNumber": 0
+    },
+    {
+      "name": "טופס הזמנה",
+      "startingRoomNumber": 255
     }
   ]
 }

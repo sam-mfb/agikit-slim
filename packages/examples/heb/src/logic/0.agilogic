@@ -161,9 +161,9 @@ Address187:
     if (controller(c22) || controller(c4)) {
       set(f13);
       status();
-    
+
       if ((v25 > 0) && (v25 != 255)) {
-        if (v25 == 1) {
+        if (v25 == 2) {
           show.obj(220);
         }
         reset(f13);

@@ -22,6 +22,8 @@
 22: use
 30: "test object"
 31: die
+32: order
+33: form "order form"
 1000: sp
 1001: tp
 1002: pos position
