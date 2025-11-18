@@ -4,6 +4,7 @@ import { ResourceToExtract, ResourceType } from '@agikit-slim/core';
 import parseArgs, { ParsedArgs } from 'minimist';
 import { buildProject } from './Commands/build';
 import { extractGame } from './Commands/extract';
+import { decompileView } from './Commands/decompileView';
 
 function parseResourcesToExtract(
   resourceType: ResourceType,
@@ -45,6 +46,13 @@ const commandRunners: { [cmd: string]: (args: ParsedArgs) => void } = {
         decompilerDebug: args.d,
         onlyResources: only.length > 0 ? only : undefined,
       });
+    }
+  },
+  'decompile-view': (args: ParsedArgs) => {
+    if (args._.length < 2) {
+      console.error(`Usage: ${process.argv[1]} ${process.argv[2]} viewfile [outputdir]`);
+    } else {
+      decompileView(args._[1], args._[2]);
     }
   },
 };
