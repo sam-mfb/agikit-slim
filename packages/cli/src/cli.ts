@@ -5,6 +5,7 @@ import parseArgs, { ParsedArgs } from 'minimist';
 import { buildProject } from './Commands/build';
 import { extractGame } from './Commands/extract';
 import { decompileView } from './Commands/decompileView';
+import { compileView } from './Commands/compileView';
 
 function parseResourcesToExtract(
   resourceType: ResourceType,
@@ -53,6 +54,15 @@ const commandRunners: { [cmd: string]: (args: ParsedArgs) => void } = {
       console.error(`Usage: ${process.argv[1]} ${process.argv[2]} viewfile [outputdir]`);
     } else {
       decompileView(args._[1], args._[2]);
+    }
+  },
+  'compile-view': (args: ParsedArgs) => {
+    if (args._.length < 2) {
+      console.error(
+        `Usage: ${process.argv[1]} ${process.argv[2]} viewfile [outputfile] [--encoding <encoding>]`,
+      );
+    } else {
+      compileView(args._[1], args._[2], args.encoding);
     }
   },
 };

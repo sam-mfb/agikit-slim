@@ -126,6 +126,18 @@ Extracts a single view resource to:
 
 If `outputdir` is not specified, files are created in the same directory as the input file.
 
+### Compile a single view file
+
+`agikit compile-view path/to/view.agiview [outputfile] [--encoding <encoding>]`
+
+Builds a view resource from:
+- `<name>.agiview` - Binary pixel data (required)
+- `<name>.agiviewdesc` - UTF-8 text description (optional, if exists in same directory)
+
+The `--encoding` parameter specifies how to encode the description text (default: `ascii`).
+
+If `outputfile` is not specified, creates `<name>.agv` in the same directory as the input file.
+
 ## Current status
 
 Todo Priorities:
