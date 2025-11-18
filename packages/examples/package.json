@@ -7,9 +7,9 @@
     "build": "echo 'No build needed for examples package'",
     "decompile:eng": "agikit extract eng/orig eng",
     "compile:eng": "agikit build eng",
-    "compile:heb": "agikit build heb",
+    "compile:heb": "agikit build heb --encoding windows-1255",
     "build-and-zip:eng": "agikit build eng && cd eng/build && zip -r ../../eng-agi.zip .",
-    "build-and-zip:heb": "agikit build heb && cd heb/build && zip -r ../../heb-agi.zip ."
+    "build-and-zip:heb": "agikit build heb --encoding windows-1255 && cd heb/build && zip -r ../../heb-agi.zip ."
   },
   "dependencies": {
     "@agikit-slim/cli": "workspace:*"
