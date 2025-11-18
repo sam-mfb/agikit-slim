@@ -23,9 +23,9 @@ function parseResourcesToExtract(
 const commandRunners: { [cmd: string]: (args: ParsedArgs) => void } = {
   build: (args: ParsedArgs) => {
     if (args._.length !== 2) {
-      console.error(`Usage: ${process.argv[1]} ${process.argv[2]} projectdir`);
+      console.error(`Usage: ${process.argv[1]} ${process.argv[2]} projectdir [--encoding <encoding>]`);
     } else {
-      buildProject(args._[1]);
+      buildProject(args._[1], args.encoding);
     }
   },
   extract: (args: ParsedArgs) => {
@@ -49,7 +49,7 @@ const commandRunners: { [cmd: string]: (args: ParsedArgs) => void } = {
   },
 };
 
-const args = parseArgs(process.argv.slice(2), { boolean: 'd' });
+const args = parseArgs(process.argv.slice(2), { boolean: 'd', string: 'encoding' });
 const command = args._[0];
 
 if (!command) {

@@ -1,8 +1,13 @@
 import { flatMap } from 'lodash';
+import * as iconv from 'iconv-lite';
 import { encodeUInt16LE } from '../DataEncoding';
 import { getXorEncryptionKey, xorBuffer } from '../XorEncryption';
 
-export function encodeMessages(messageArray: (string | undefined)[], encrypt: boolean): Buffer {
+export function encodeMessages(
+  messageArray: (string | undefined)[],
+  encrypt: boolean,
+  encoding: string = 'ascii',
+): Buffer {
   const messageBuffers: Buffer[] = [];
 
   for (let index = 0; index < messageArray.length; index++) {
@@ -10,7 +15,7 @@ export function encodeMessages(messageArray: (string | undefined)[], encrypt: bo
     if (message == null) {
       messageBuffers.push(Buffer.alloc(0));
     } else {
-      messageBuffers.push(Buffer.from(`${message}\0`, 'ascii'));
+      messageBuffers.push(iconv.encode(`${message}\0`, encoding));
     }
   }
 
