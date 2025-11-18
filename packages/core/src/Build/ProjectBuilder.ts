@@ -25,6 +25,8 @@ import {
   LogicResource,
   PicResource,
   Picture,
+  readViewResource,
+  buildView,
 } from '..';
 import { compileLogicScript, LogicCompilerError } from './BuildLogic';
 import fileSize from 'filesize';
@@ -101,6 +103,13 @@ export class ProjectBuilder {
       }
     }
 
+    if (resourceType === ResourceType.VIEW) {
+      const viewPath = path.join(this.project.sourcePath, 'view', `${resourceNumber}.agiview`);
+      if (fs.existsSync(viewPath)) {
+        return this.buildViewResource(viewPath, resourceNumber);
+      }
+    }
+
     const dataPath = path.join(
       this.project.sourcePath,
       resourceType.toLowerCase(),
@@ -145,6 +154,37 @@ export class ProjectBuilder {
       data,
       number: resourceNumber,
       type: ResourceType.PIC,
+    };
+  }
+
+  private buildViewResource(viewPath: string, resourceNumber: number): Resource {
+    this.logger.log(`Reading ${path.relative(this.project.basePath, viewPath)}`);
+
+    // Read the binary view file
+    const viewData = fs.readFileSync(viewPath);
+    const view = readViewResource(viewData);
+
+    // Check for a description file
+    const descPath = path.join(
+      this.project.sourcePath,
+      'view',
+      `${resourceNumber}.agiviewdesc`,
+    );
+
+    if (fs.existsSync(descPath)) {
+      this.logger.log(`Merging description from ${path.relative(this.project.basePath, descPath)}`);
+
+      // Read the UTF-8 description and store it
+      view.description = fs.readFileSync(descPath, 'utf-8');
+    }
+
+    // Rebuild the view with encoding
+    const data = buildView(view, this.encoding);
+
+    return {
+      data,
+      number: resourceNumber,
+      type: ResourceType.VIEW,
     };
   }
 

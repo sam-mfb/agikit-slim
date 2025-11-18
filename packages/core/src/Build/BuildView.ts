@@ -1,5 +1,6 @@
 import { AGIView, NonMirroredViewCel, ViewLoop } from '../Types/View';
 import { encodeUInt16LE } from '../DataEncoding';
+import * as iconv from 'iconv-lite';
 
 function buildHeaderForOptionalBuffers(
   buffers: (Buffer | undefined)[],
@@ -90,7 +91,7 @@ function encodeLoop(loop: ViewLoop, mirrorSourceLoopNumber: number | undefined):
   ]);
 }
 
-export function buildView(view: AGIView): Buffer {
+export function buildView(view: AGIView, encoding: string = 'ascii'): Buffer {
   const mirrorSourceLoopNumbers = new Set<number>();
   const mirrorSourceLoopNumbersByTargetLoopNumber = new Map<number, number>();
   view.loops.forEach((loop, loopNumber) => {
@@ -132,7 +133,7 @@ export function buildView(view: AGIView): Buffer {
   });
 
   const encodedDescription = view.description
-    ? Buffer.concat([Buffer.from(view.description, 'ascii'), Buffer.from([0])])
+    ? Buffer.concat([iconv.encode(view.description, encoding), Buffer.from([0])])
     : undefined;
   const headerLength = 5 + encodedLoops.length * 2;
 
