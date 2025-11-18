@@ -51,3 +51,5 @@ qtagistudio-*
 /packages/examples/heb/agikit-project.json
 /packages/examples/eng-agi.zip
 /packages/examples/heb-agi.zip
+/packages/examples/*.agiview
+/packages/examples/*.agiviewdesc
