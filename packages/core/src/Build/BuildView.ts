@@ -46,6 +46,15 @@ function encodeCel(cel: NonMirroredViewCel, mirrorSourceLoopNumber: number | und
     transparencyMirroringByte += (mirrorSourceLoopNumber & 0b111) << 4;
   }
 
+  // Helper function to emit a run, splitting it into multiple bytes if > 15 pixels
+  const emitRun = (data: number[], color: number, length: number) => {
+    while (length > 0) {
+      const chunkLength = Math.min(length, 15);
+      data.push(((color & 0b1111) << 4) + chunkLength);
+      length -= chunkLength;
+    }
+  };
+
   const data = [cel.width, cel.height, transparencyMirroringByte];
   for (let y = 0; y < cel.height; y++) {
     let lastPixelColor: number | undefined;
@@ -57,7 +66,7 @@ function encodeCel(cel: NonMirroredViewCel, mirrorSourceLoopNumber: number | und
       if (lastPixelColor == null) {
         lastPixelColor = pixelColor;
       } else if (lastPixelColor !== pixelColor) {
-        data.push(((lastPixelColor & 0b1111) << 4) + (runLength & 0b1111));
+        emitRun(data, lastPixelColor, runLength);
         runLength = 0;
         lastPixelColor = pixelColor;
       }
@@ -66,7 +75,7 @@ function encodeCel(cel: NonMirroredViewCel, mirrorSourceLoopNumber: number | und
     }
 
     if (lastPixelColor != null && lastPixelColor !== cel.transparentColor) {
-      data.push(((lastPixelColor & 0b1111) << 4) + (runLength & 0b1111));
+      emitRun(data, lastPixelColor, runLength);
     }
 
     data.push(0);
