@@ -1,5 +1,6 @@
 import { AGIView, NonMirroredViewCel, ViewLoop } from '../Types/View';
 import { encodeUInt16LE } from '../DataEncoding';
+import * as iconv from 'iconv-lite';
 
 function buildHeaderForOptionalBuffers(
   buffers: (Buffer | undefined)[],
@@ -45,6 +46,15 @@ function encodeCel(cel: NonMirroredViewCel, mirrorSourceLoopNumber: number | und
     transparencyMirroringByte += (mirrorSourceLoopNumber & 0b111) << 4;
   }
 
+  // Helper function to emit a run, splitting it into multiple bytes if > 15 pixels
+  const emitRun = (data: number[], color: number, length: number) => {
+    while (length > 0) {
+      const chunkLength = Math.min(length, 15);
+      data.push(((color & 0b1111) << 4) + chunkLength);
+      length -= chunkLength;
+    }
+  };
+
   const data = [cel.width, cel.height, transparencyMirroringByte];
   for (let y = 0; y < cel.height; y++) {
     let lastPixelColor: number | undefined;
@@ -56,7 +66,7 @@ function encodeCel(cel: NonMirroredViewCel, mirrorSourceLoopNumber: number | und
       if (lastPixelColor == null) {
         lastPixelColor = pixelColor;
       } else if (lastPixelColor !== pixelColor) {
-        data.push(((lastPixelColor & 0b1111) << 4) + (runLength & 0b1111));
+        emitRun(data, lastPixelColor, runLength);
         runLength = 0;
         lastPixelColor = pixelColor;
       }
@@ -65,7 +75,7 @@ function encodeCel(cel: NonMirroredViewCel, mirrorSourceLoopNumber: number | und
     }
 
     if (lastPixelColor != null && lastPixelColor !== cel.transparentColor) {
-      data.push(((lastPixelColor & 0b1111) << 4) + (runLength & 0b1111));
+      emitRun(data, lastPixelColor, runLength);
     }
 
     data.push(0);
@@ -90,7 +100,7 @@ function encodeLoop(loop: ViewLoop, mirrorSourceLoopNumber: number | undefined):
   ]);
 }
 
-export function buildView(view: AGIView): Buffer {
+export function buildView(view: AGIView, encoding: string = 'ascii'): Buffer {
   const mirrorSourceLoopNumbers = new Set<number>();
   const mirrorSourceLoopNumbersByTargetLoopNumber = new Map<number, number>();
   view.loops.forEach((loop, loopNumber) => {
@@ -132,7 +142,7 @@ export function buildView(view: AGIView): Buffer {
   });
 
   const encodedDescription = view.description
-    ? Buffer.concat([Buffer.from(view.description, 'ascii'), Buffer.from([0])])
+    ? Buffer.concat([iconv.encode(view.description, encoding), Buffer.from([0])])
     : undefined;
   const headerLength = 5 + encodedLoops.length * 2;
 

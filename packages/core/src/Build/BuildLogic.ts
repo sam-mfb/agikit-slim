@@ -34,9 +34,13 @@ export function assembleLogic(
   instructions: LogicInstruction[],
   messages: (string | undefined)[],
   encryptMessages: boolean,
+  encoding: string = 'ascii',
 ): Buffer {
   const assembler = new LogicAssembler(instructions);
-  const logic = encodeLogic(assembler.assemble(), encodeMessages(messages, encryptMessages));
+  const logic = encodeLogic(
+    assembler.assemble(),
+    encodeMessages(messages, encryptMessages, encoding),
+  );
   return logic;
 }
 
@@ -46,6 +50,7 @@ export function compileLogicScript(
   wordList: WordList,
   objectList: ObjectList,
   encryptMessages: boolean,
+  encoding: string = 'ascii',
 ): [Buffer, LogicDiagnostic[]] {
   const rawProgram = parseLogicScriptRaw(sourceCode, scriptPath);
   const diagnostics = getDiagnosticsForProgram(rawProgram);
@@ -60,6 +65,6 @@ export function compileLogicScript(
   const compiler = new LogicCompiler(graph, astGenerator.getLabels());
   const { instructions } = compiler.compile();
   const messages = astGenerator.generateMessageArray();
-  const logic = assembleLogic(instructions, messages, encryptMessages);
+  const logic = assembleLogic(instructions, messages, encryptMessages, encoding);
   return [logic, diagnostics];
 }

@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@agikit-slim/core",
+      "comment": "Add encoding support and testing",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@agikit-slim/core"
+}

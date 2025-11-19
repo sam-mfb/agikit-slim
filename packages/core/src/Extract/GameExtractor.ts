@@ -17,6 +17,7 @@ import {
   readV2ResourceDirs,
   readV3Resource,
   readV3ResourceDir,
+  readViewResource,
   readWordsTok,
   ResourceType,
   WordList,
@@ -167,6 +168,20 @@ export class GameExtractor {
       const picture = readPictureResource(resource.data, this.project.config.agiVersion.major >= 3);
       const json = JSON.stringify(buildPictureJSON(picture), null, 2);
       writeFileSync(destPath, Buffer.from(json, 'utf-8'));
+    } else if (entry.resourceType === ResourceType.VIEW) {
+      // Extract view binary
+      writeFileSync(destPath, resource.data);
+
+      // Extract description if present
+      const view = readViewResource(resource.data);
+      if (view.description) {
+        const descPath = path.join(
+          destDir,
+          entry.resourceType.toLowerCase(),
+          `${entry.resourceNumber}.agiviewdesc`,
+        );
+        writeFileSync(descPath, Buffer.from(view.description, 'utf-8'));
+      }
     } else {
       writeFileSync(destPath, resource.data);
     }

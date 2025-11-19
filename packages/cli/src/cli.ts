@@ -4,6 +4,8 @@ import { ResourceToExtract, ResourceType } from '@agikit-slim/core';
 import parseArgs, { ParsedArgs } from 'minimist';
 import { buildProject } from './Commands/build';
 import { extractGame } from './Commands/extract';
+import { decompileView } from './Commands/decompileView';
+import { compileView } from './Commands/compileView';
 
 function parseResourcesToExtract(
   resourceType: ResourceType,
@@ -23,9 +25,11 @@ function parseResourcesToExtract(
 const commandRunners: { [cmd: string]: (args: ParsedArgs) => void } = {
   build: (args: ParsedArgs) => {
     if (args._.length !== 2) {
-      console.error(`Usage: ${process.argv[1]} ${process.argv[2]} projectdir`);
+      console.error(
+        `Usage: ${process.argv[1]} ${process.argv[2]} projectdir [--encoding <encoding>]`,
+      );
     } else {
-      buildProject(args._[1]);
+      buildProject(args._[1], args.encoding);
     }
   },
   extract: (args: ParsedArgs) => {
@@ -47,9 +51,25 @@ const commandRunners: { [cmd: string]: (args: ParsedArgs) => void } = {
       });
     }
   },
+  'decompile-view': (args: ParsedArgs) => {
+    if (args._.length < 2) {
+      console.error(`Usage: ${process.argv[1]} ${process.argv[2]} viewfile [outputdir]`);
+    } else {
+      decompileView(args._[1], args._[2]);
+    }
+  },
+  'compile-view': (args: ParsedArgs) => {
+    if (args._.length < 2) {
+      console.error(
+        `Usage: ${process.argv[1]} ${process.argv[2]} viewfile [outputfile] [--encoding <encoding>]`,
+      );
+    } else {
+      compileView(args._[1], args._[2], args.encoding);
+    }
+  },
 };
 
-const args = parseArgs(process.argv.slice(2), { boolean: 'd' });
+const args = parseArgs(process.argv.slice(2), { boolean: 'd', string: 'encoding' });
 const command = args._[0];
 
 if (!command) {

@@ -10,8 +10,16 @@ if (!f4 && f2 && (v9 == 0)) {
   if (said("examine", "test object")) {
     print(m5);
     get.num(m5, v255);
-  
+
     if (has(i1)) {
+      show.obj(220);
+    } else {
+      print(m4);
+    }
+  }
+
+  if (said("examine", "order") || said("examine", "order form")) {
+    if (has(i2)) {
       show.obj(220);
     } else {
       print(m4);
