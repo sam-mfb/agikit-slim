@@ -6,7 +6,10 @@ https://github.com/nbudin/agikit
 
 The purpose of the fork is to focus solely on decompiling and compiling and not any user interface issues. This makes it easier to keep dependencies up to date and to add new features.
 
-The particular feature I forked in order to add is foreign-language encoding for translations. I tried to develop a PR for the original package, but its development toolchain is somewhat out of date and one I'm not familiar with...
+The features that have been added to it beyond the original agikit are:
+
+- Compiling with encoded text (for non ascii languages)
+- Decompiling individual views (and recompiling with encoded descriptions)
 
 ## Background
 
@@ -15,6 +18,66 @@ in the 1980s to develop adventure games including King's Quest I, II, and III, S
 and more. Later, it was reverse engineered by fans and used to develop many fan-made games.
 A lot more information about AGI is available at
 [the AGI Programmers Wiki](http://agiwiki.sierrahelp.com).
+
+## Command line usage
+
+To install the CLI globally:
+
+`npm install -g @agikit-slim/cli`
+
+### Extract an AGI game to source files
+
+`agikit extract path/to/game output/path`
+
+This will extract all resources including:
+
+- Logic scripts (to `.agilogic` files)
+- Pictures (to `.agipic` JSON files)
+- Views (to `.agiview` binary files, with `.agiviewdesc` text files for descriptions)
+- Sounds (to `.agisound` files)
+- Objects and vocabulary
+
+### Build AGI game volume files from source
+
+`agikit build path/to/project [--encoding <encoding>]`
+
+Builds the game from source files. The `--encoding` parameter allows you to specify the character encoding for text (default: `ascii`).
+
+**Encoding examples:**
+
+- `agikit build myproject --encoding windows-1255` (Hebrew)
+- `agikit build myproject --encoding windows-1251` (Russian/Cyrillic)
+- `agikit build myproject --encoding windows-1252` (Western European)
+
+The encoding affects:
+
+- Object names in `object.json`
+- View descriptions in `.agiviewdesc` files
+- Any text in logic scripts
+
+### Decompile a single view file
+
+`agikit decompile-view path/to/view.agv [outputdir]`
+
+Extracts a single view resource to:
+
+- `<name>.agiview` - Binary pixel data
+- `<name>.agiviewdesc` - UTF-8 text description (if the view has one)
+
+If `outputdir` is not specified, files are created in the same directory as the input file.
+
+### Compile a single view file
+
+`agikit compile-view path/to/view.agiview [outputfile] [--encoding <encoding>]`
+
+Builds a view resource from:
+
+- `<name>.agiview` - Binary pixel data (required)
+- `<name>.agiviewdesc` - UTF-8 text description (optional, if exists in same directory)
+
+The `--encoding` parameter specifies how to encode the description text (default: `ascii`).
+
+If `outputfile` is not specified, creates `<name>.agv` in the same directory as the input file.
 
 ## Development Setup
 
@@ -57,11 +120,13 @@ This project uses Rush's change file workflow for version management.
 **Developer workflow (before creating PR):**
 
 After making changes to a package, create a change file:
+
 ```bash
 rush change
 ```
 
 This will prompt you to:
+
 - Select which packages changed
 - Choose the version bump type (major/minor/patch)
 - Describe your changes
@@ -80,63 +145,9 @@ Commit the generated change file (in `common/changes/`) with your PR.
    - Publish to npm with public access
 
 The packages will be published to:
+
 - https://www.npmjs.com/package/@agikit-slim/core
 - https://www.npmjs.com/package/@agikit-slim/cli
-
-## Command line usage
-
-To install the CLI globally:
-
-`npm install -g @agikit-slim/cli`
-
-### Extract an AGI game to source files
-
-`agikit extract path/to/game output/path`
-
-This will extract all resources including:
-- Logic scripts (to `.agilogic` files)
-- Pictures (to `.agipic` JSON files)
-- Views (to `.agiview` binary files, with `.agiviewdesc` text files for descriptions)
-- Sounds (to `.agisound` files)
-- Objects and vocabulary
-
-### Build AGI game volume files from source
-
-`agikit build path/to/project [--encoding <encoding>]`
-
-Builds the game from source files. The `--encoding` parameter allows you to specify the character encoding for text (default: `ascii`).
-
-**Encoding examples:**
-- `agikit build myproject --encoding windows-1255` (Hebrew)
-- `agikit build myproject --encoding windows-1251` (Russian/Cyrillic)
-- `agikit build myproject --encoding windows-1252` (Western European)
-
-The encoding affects:
-- Object names in `object.json`
-- View descriptions in `.agiviewdesc` files
-- Any text in logic scripts
-
-### Decompile a single view file
-
-`agikit decompile-view path/to/view.agv [outputdir]`
-
-Extracts a single view resource to:
-- `<name>.agiview` - Binary pixel data
-- `<name>.agiviewdesc` - UTF-8 text description (if the view has one)
-
-If `outputdir` is not specified, files are created in the same directory as the input file.
-
-### Compile a single view file
-
-`agikit compile-view path/to/view.agiview [outputfile] [--encoding <encoding>]`
-
-Builds a view resource from:
-- `<name>.agiview` - Binary pixel data (required)
-- `<name>.agiviewdesc` - UTF-8 text description (optional, if exists in same directory)
-
-The `--encoding` parameter specifies how to encode the description text (default: `ascii`).
-
-If `outputfile` is not specified, creates `<name>.agv` in the same directory as the input file.
 
 ## Current status
 
