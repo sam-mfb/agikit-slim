@@ -2,6 +2,23 @@
   "name": "@agikit-slim/cli",
   "entries": [
     {
+      "version": "1.1.0",
+      "tag": "@agikit-slim/cli_v1.1.0",
+      "date": "Wed, 19 Nov 2025 04:01:13 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add ability to encode compiled text with non-ascii encodings. Add ability to encode/decode single view files."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@agikit-slim/core\" to `1.1.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.1",
       "tag": "@agikit-slim/cli_v1.0.1",
       "date": "Sun, 16 Nov 2025 22:02:28 GMT",
