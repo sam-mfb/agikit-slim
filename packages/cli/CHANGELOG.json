@@ -2,6 +2,18 @@
   "name": "@agikit-slim/cli",
   "entries": [
     {
+      "version": "1.2.0",
+      "tag": "@agikit-slim/cli_v1.2.0",
+      "date": "Fri, 21 Nov 2025 11:04:23 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add individual pic compile/decompile options"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.1.0",
       "tag": "@agikit-slim/cli_v1.1.0",
       "date": "Wed, 19 Nov 2025 04:01:13 GMT",
