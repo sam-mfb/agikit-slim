@@ -9,3 +9,4 @@
 /packages/*/reextracted
 node_modules
 qtagistudio-*
+*.generated.ts
