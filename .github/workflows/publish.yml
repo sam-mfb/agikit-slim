@@ -54,13 +54,27 @@ jobs:
       - name: Publish @agikit-slim/core to NPM
         run: |
           cd packages/core
-          pnpm publish --access public --no-git-checks
+          LOCAL_VERSION=$(node -p "require('./package.json').version")
+          NPM_VERSION=$(npm view @agikit-slim/core version 2>/dev/null || echo "0.0.0")
+          if [ "$LOCAL_VERSION" != "$NPM_VERSION" ]; then
+            echo "Publishing @agikit-slim/core@$LOCAL_VERSION (npm has $NPM_VERSION)"
+            pnpm publish --access public --no-git-checks
+          else
+            echo "Skipping @agikit-slim/core@$LOCAL_VERSION (already published)"
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish @agikit-slim/cli to NPM
         run: |
           cd packages/cli
-          pnpm publish --access public --no-git-checks
+          LOCAL_VERSION=$(node -p "require('./package.json').version")
+          NPM_VERSION=$(npm view @agikit-slim/cli version 2>/dev/null || echo "0.0.0")
+          if [ "$LOCAL_VERSION" != "$NPM_VERSION" ]; then
+            echo "Publishing @agikit-slim/cli@$LOCAL_VERSION (npm has $NPM_VERSION)"
+            pnpm publish --access public --no-git-checks
+          else
+            echo "Skipping @agikit-slim/cli@$LOCAL_VERSION (already published)"
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
