@@ -10,6 +10,7 @@ The features that have been added to it beyond the original agikit are:
 
 - Compiling with encoded text (for non ascii languages)
 - Decompiling individual views (and recompiling with encoded descriptions)
+- Decompiling individual pics (and recompiling)
 
 ## Background
 
@@ -78,6 +79,20 @@ Builds a view resource from:
 The `--encoding` parameter specifies how to encode the description text (default: `ascii`).
 
 If `outputfile` is not specified, creates `<name>.agv` in the same directory as the input file.
+
+### Decompile a single pic file
+
+`agikit decompile-pic path/to/pic.agp [outputfile] [--compress-colors]`
+
+Extracts a single picture resource to a `.agipic` JSON file.
+
+### Compile a single pic file
+
+`agikit compile-pic path/to/pic.agipic [outputfile] [--compress-colors]`
+
+Builds a picture resource from a `.agipic` JSON file.
+
+The `--compress-colors` option is for certain AGI versions that use compressed color format.
 
 ## Development Setup
 
