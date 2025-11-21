@@ -6,6 +6,8 @@ import { buildProject } from './Commands/build';
 import { extractGame } from './Commands/extract';
 import { decompileView } from './Commands/decompileView';
 import { compileView } from './Commands/compileView';
+import { decompilePic } from './Commands/decompilePic';
+import { compilePic } from './Commands/compilePic';
 
 function parseResourcesToExtract(
   resourceType: ResourceType,
@@ -67,9 +69,30 @@ const commandRunners: { [cmd: string]: (args: ParsedArgs) => void } = {
       compileView(args._[1], args._[2], args.encoding);
     }
   },
+  'decompile-pic': (args: ParsedArgs) => {
+    if (args._.length < 2) {
+      console.error(
+        `Usage: ${process.argv[1]} ${process.argv[2]} picfile [outputfile] [--compress-colors]`,
+      );
+    } else {
+      decompilePic(args._[1], args._[2], args['compress-colors']);
+    }
+  },
+  'compile-pic': (args: ParsedArgs) => {
+    if (args._.length < 2) {
+      console.error(
+        `Usage: ${process.argv[1]} ${process.argv[2]} picfile [outputfile] [--compress-colors]`,
+      );
+    } else {
+      compilePic(args._[1], args._[2], args['compress-colors']);
+    }
+  },
 };
 
-const args = parseArgs(process.argv.slice(2), { boolean: 'd', string: 'encoding' });
+const args = parseArgs(process.argv.slice(2), {
+  boolean: ['d', 'compress-colors'],
+  string: 'encoding',
+});
 const command = args._[0];
 
 if (!command) {
