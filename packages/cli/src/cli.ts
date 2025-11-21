@@ -89,7 +89,10 @@ const commandRunners: { [cmd: string]: (args: ParsedArgs) => void } = {
   },
 };
 
-const args = parseArgs(process.argv.slice(2), { boolean: ['d', 'compress-colors'], string: 'encoding' });
+const args = parseArgs(process.argv.slice(2), {
+  boolean: ['d', 'compress-colors'],
+  string: 'encoding',
+});
 const command = args._[0];
 
 if (!command) {
